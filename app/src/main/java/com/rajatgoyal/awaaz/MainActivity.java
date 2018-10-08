@@ -22,16 +22,19 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = "myMessage";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) 
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() 
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) 
+            {
                 Intent i = new Intent(getApplicationContext(), Help.class);
                 startActivity(i);
             }
@@ -56,7 +59,8 @@ public class MainActivity extends AppCompatActivity
     float f = (float)0.7;
     ViewGroup layout;
 
-    public void click1(View v){
+    public void click1(View v)
+    {
         Log.i(TAG,f+"");
         layout = (ViewGroup)findViewById(R.id.layout1);
         layout.setAlpha(1);
@@ -64,28 +68,32 @@ public class MainActivity extends AppCompatActivity
         layout.setAlpha(f);
     }
 
-    public void click2(View v){
+    public void click2(View v)
+    {
         layout = (ViewGroup)findViewById(R.id.layout2);
         layout.setAlpha(1);
         startActivity(new Intent(this, SpeechtoText.class));
         layout.setAlpha(f);
     }
 
-    public void click3(View v){
+    public void click3(View v)
+    {
         layout = (ViewGroup)findViewById(R.id.layout3);
         layout.setAlpha(1);
         startActivity(new Intent(this, Recorder.class));
         layout.setAlpha(f);
     }
 
-    public void click4(View v){
+    public void click4(View v)
+    {
         layout = (ViewGroup)findViewById(R.id.layout4);
         layout.setAlpha(1);
         startActivity(new Intent(this, About.class));
         layout.setAlpha(f);
     }
 
-    public void click5(View v){
+    public void click5(View v)
+    {
         layout = (ViewGroup)findViewById(R.id.layout5);
         layout.setAlpha(1);
         startActivity(new Intent(this, SpeechToSpeech.class));
@@ -93,7 +101,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() 
+    {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -103,21 +112,24 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) 
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) 
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_mail) {
+        if (id == R.id.action_mail) 
+        {
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setData(Uri.parse("mail to:"));
             String to[]={"rajatgoyal715@gmail.com"};
@@ -128,7 +140,8 @@ public class MainActivity extends AppCompatActivity
             Intent chooser=Intent.createChooser(i,"Send Email");
             startActivity(chooser);
             return true;
-        } else if(id == R.id.action_about) {
+        } else if(id == R.id.action_about) 
+        {
             Intent i= new Intent(this, About.class);
             startActivity(i);
         }
@@ -137,28 +150,36 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item) 
+    {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_text_to_speech) {
+        if (id == R.id.nav_text_to_speech) 
+        {
             startActivity(new Intent(this,TexttoSpeech.class));
-        } else if (id == R.id.nav_speech_to_text) {
+        } else if (id == R.id.nav_speech_to_text) 
+        {
             startActivity(new Intent(this,SpeechtoText.class));
-        } else if (id == R.id.nav_speech_to_speech) {
+        } else if (id == R.id.nav_speech_to_speech) 
+        {
             startActivity(new Intent(this, SpeechToSpeech.class));
-        } else if (id == R.id.nav_recorder) {
+        } else if (id == R.id.nav_recorder) 
+        {
             startActivity(new Intent(this,Recorder.class));
-        } else if (id == R.id.nav_about) {
+        } else if (id == R.id.nav_about) 
+        {
             startActivity(new Intent(this,About.class));
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share) 
+        {
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("text/plain");
             i.putExtra("android.intent.extra.TEXT", "Enjoy AWAAZ app by converting text to speech and speech to text. Just click on the following link to download the app :\n" +
                     "https://play.google.com");
             Intent chooser = Intent.createChooser(i,"Share With");
             startActivity(chooser);
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_send) 
+        {
             Intent i=new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse("https://play.google.com"));
             Intent chooser = Intent.createChooser(i,"Open With");
